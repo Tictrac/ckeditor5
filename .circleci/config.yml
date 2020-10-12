@@ -4,7 +4,7 @@ executors:
   linux-executor:
     machine:
       image: ubuntu-1604:201903-01
-      # docker_layer_caching: true
+      docker_layer_caching: true
 
 jobs:
   build:
@@ -37,7 +37,6 @@ jobs:
           name: Create distribution
           command: |
             printf "registry=https://nexus.tictrac.com/repository/tictrac-npm/\nemail=developer@tictrac.com\nalways-auth=true\n_auth=$NEXUS_TOKEN" > ~/.npmrc
-            tail ~/.npmrc
             cd packages/ckeditor5-build-balloon-block
             npm publish
       - run:
