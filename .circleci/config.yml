@@ -36,9 +36,6 @@ jobs:
       - run:
           name: Create distribution
           command: |
-            ls -la
-            NEXUS_TOKEN="$(echo -n '$NEXUS_USER:$NEXUS_PASSWORD' | openssl base64)"
-            echo $NEXUS_TOKEN
             printf "registry=https://nexus.tictrac.com/repository/tictrac-npm/\nemail=developer@tictrac.com\nalways-auth=true\n_auth=$NEXUS_TOKEN" > ~/.npmrc
             tail ~/.npmrc
             cd packages/ckeditor5-build-balloon-block
